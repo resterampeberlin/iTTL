@@ -1,14 +1,14 @@
-/**
- * @file iTTL.h
- *
- * Class declaration for iTTL class  and helper enums
- */
+//!
+//! @file iTTL.h
+//!
+//! Class declaration for iTTL class  and helper enums
+//!
 
-/**
- * iTTL commands defined on the bus
- *
- * Each command is sent by the camera to the flash
- */
+//!
+//! iTTL commands defined on the bus
+//!
+//! Each command is sent by the camera to the flash
+//!
 
 typedef enum iTTL_Command {
     Flash_Setting = 0xa0,		//!< flash Settings,  send by flash
@@ -26,24 +26,50 @@ typedef enum iTTL_Command {
     Flash_Power = 0xd3          //!< set flash power before flash, sent by camera
 } iTLL_Command_e;
 
-/**
- * Init 0 Message Definition
- *
- * 17 Bytes long
- * Purpose unkown
- */
+//!
+//! Init 0 Message Definition
+//!
+//! Payload: 17 bytes
+//! Direction: camera to flash
+//! Purpose: unkown
+//!
 
 typedef struct iTTL_Init_0_Msg {
     uint8_t[17] Unknown         //!< Unknown
 } iTTL_Init_0_Msg_t;
 
+//!
+//! Init 0 Message Definition
+//!
+//! Payload: 17 bytes
+//! Direction: camera to flash
+//! Purpose: unkown
+//! @sa iTTL_Init_0_Msg, iTTL_Init_2_Msg
+//!
+
 typedef struct iTTL_Init_1_Msg {
     uint8_t[9] Unknown          //!< Unknown
 } TTL_Init_1_Msg_t;
 
+//!
+//! Init 0 Message Definition
+//!
+//! Payload: 17 bytes
+//! Direction: camera to flash
+//! Purpose: unkown
+//!
+
 typedef struct iTTL_Init_2_Msg {
     uint8_t[45] Unknown         //!< Unknown
 } iTTL_Init_2_Msg_t;
+
+//!
+//! Init 0 Message Definition
+//!
+//! Payload: 17 bytes
+//! Direction: camera to flash
+//! Purpose: unkown
+//!
 
 typedef struct iTTL_Flash_Setting_Msg {
     struct Status {
@@ -85,6 +111,14 @@ typedef struct iTTL_Flash_Setting_Msg {
     uint8_t CLS_Grp[3],	//!< Flash exposure compensation or flash power of CLS Groups A-C
 } iTTL_Flash_Setting_Msg_t;
 
+//!
+//! Init 0 Message Definition
+//!
+//! Payload: 17 bytes
+//! Direction: camera to flash
+//! Purpose: unkown
+//!
+
 typedef struct iTTL_Camera_Setting_Msg {
     uint8_t Mode,		//!< Flash Mode, 0x00=AA/FP, 0x01=TTL/FP, 0x02,0x04=TTL/BL/FP, 0x05=TTL/BL, 0x08=AA/FP
     struct Configuration {
@@ -111,86 +145,176 @@ typedef struct iTTL_Camera_Setting_Msg {
     uint8_t Unknown_14	//!< Seems to be related to ISO
 } iTTL_Camera_Setting_Msg_t;
 
+//!
+//! Init 0 Message Definition
+//!
+//! Payload: 17 bytes
+//! Direction: camera to flash
+//! Purpose: unkown
+//!
+
 typedef struct iTTL_Postflash_1_Msg {
     uint8_t Unknown 	//!< Unknown
 } iTTL_Postflash_1_Msg_t;
 
+//!
+//! Init 0 Message Definition
+//!
+//! Payload: 17 bytes
+//! Direction: camera to flash
+//! Purpose: unkown
+//!
+
 typedef struct iTTL_Postflash_2_Msg {
     uint8_t Unknown[2] 	//!< Unknown
 } iTTL_Postflash_2_Msg_t;
+
+//!
+//! Init 0 Message Definition
+//!
+//! Payload: 17 bytes
+//! Direction: camera to flash
+//! Purpose: unkown
+//!
 
 typedef struct iTTL_AF_Ill_Msg {
     uint8_t Enable 		//!< 0x01 = Enable, 0x00 = Disable AF Illumation light
     uint8_t False_1		//!< always 0
 } iTTL_AF_Ill_Msg_t;
 
+//!
+//! Init 0 Message Definition
+//!
+//! Payload: 17 bytes
+//! Direction: camera to flash
+//! Purpose: unkown
+//!
+
 typedef struct iTTL_Red_Eye_Reduction_Msg {
     uint8_t Enable 		//!< 0x80 = Enable, 0x00 = Disable Red Eye reduction flashes
 } iTTL_Red_Eye_Reduction_Msg_t;
+
+//!
+//! Init 0 Message Definition
+//!
+//! Payload: 17 bytes
+//! Direction: camera to flash
+//! Purpose: unkown
+//!
 
 
 typedef struct iTTL_Modelling_Light_Msg {
     uint8_t Enable 		//!< 0xD5 = Enable, flash fires flashes for 1,5s
 } iTTL_Modelling_Light_Msg_t;
 
+//!
+//! Init 0 Message Definition
+//!
+//! Payload: 17 bytes
+//! Direction: camera to flash
+//! Purpose: unkown
+//!
+
 typedef struct iTTL_Preflash_2_Msg {
     uint8_t Power 		//!< 0d = weakest Power, 9d = 1/128+2/3ev, 24 maximum  1/32+1/3ev
 } iTTL_Preflash_2_Msg_t;
 
 
-/**
- * Driver for iTTL Protocol
- */
+//!
+//! Driver for iTTL Protocol
+//!
 
 class iTTL
 {
-    /**
-     * Arduino Constructor
-     *
-     * Creates a new instance of this driver.  Before using, you create an instance
-     * and send in the unique pins that this chip is connected to.
-     *
-     * @param SyncPin   The pin attached to sync connector of the hotshoe
-     * @param AckPin    The pin attached to ack connector of the hotshoe
-     * @param DataPin   The pin attached to data connector of the hotshoe
-     * @param ClockPin  The pin attached to clock connector of the hotshoe
-     */
+    //!
+    //! Constructor
+    //!
+    //! Creates a new instance of this driver.  Before using, you create an instance
+    //! and send in the unique pins that this chip is connected to.
+    *
+    * @param aSyncPin   The pin attached to sync connector of the hotshoe
+    * @param aAckPin    The pin attached to ack connector of the hotshoe
+    * @param aDataPin   The pin attached to data connector of the hotshoe
+    * @param aClockPin  The pin attached to clock connector of the hotshoe
+    */
     
-    iTTL(uint8_t SyncPin, uint8_t AckPin, uint8_t DataPin, uint8_t ClockPin);
-/*
-    //
-    begin
-	end
-// status
-BOOL isflashPresent
-BOOL getFlashSetting()
-	// Low Level Routines
-	Listen
-	Dump
-	Send 
-	Receive
-	// High Level Routines
-	sendCameraOff
-	sendFlashPower
-	sendModellingLight
-	sendRedEye(BOOL)
-	flash
+    iTTL(uint8_t aSyncPin, uint8_t aAckPin, uint8_t aDataPin, uint8_t aClockPin);
+    
+    
+    //!
+    //! @name low level functions
+    //!
+    //!@{
+    
+    //!
+    //! Listen on the iTTL bus until a message is detected or timeout occured
+    //!
+    //! @param aTimeout Timeout in ms
+    //!
+    void Listen(uint8_t aTimeout);
+    
+    void Dump(uint8_t *aMsg);
+    void Send(iTTL_Command_e aCmd, uint8_t *aMsg);
+    void Receive(iTTL_Command_e aCmd, uint8_t *aMsg);
+    //!@}
+    /*
+     //
+     begin
+     end
+     // status
+     BOOL isflashPresent
+     BOOL getFlashSetting()
+     
+     // High Level Routines
+     sendCameraOff
+     sendFlashPower
+     sendModellingLight
+     sendRedEye(BOOL)
+     flash
+     */
 Private:
-	BOOL startTransfer
-	BOOL receiveByte
-	BOOL sendByte
-	BOOL endTransfer
-	uint8_t CRC (payload) 
-	unit8_t getPayLoadSize(iTTLCommand);
-*/
+    //!
+    //! @name internal low level bus handling functions
+    //!
+    //!@{
+    
+    //!
+    //! Listen on the iTTL bus until a message is detected or timeout occured
+    //!
+    //! @param aTimeout Timeout in ms
+    //!
+    
+    BOOL startTransfer
+    BOOL receiveByte
+    BOOL sendByte
+    BOOL endTransfer
+    
+    //!@}
+    uint8_t CRC (payload)
+    unit8_t getPayLoadSize(iTTLCommand);
+    */
 };
 
-
-/**
- * @mainpage iTTL Protocol driver for Nikon SB flashes
- *
- * @section Credtits
- *
- * @li <a href="http://cms.diodenring.de/electronic/microcontroller/110-ittlanalysis">iTTL Protocol Analysis</a>
- * @li <a href="http://dptnt.com/2010/04/nikon-flash-interface/">Hardware Analysis</a>
- */
+//!
+//! @mainpage iTTL Protocol driver for Nikon SB flashes
+//!
+//! @section Purpose
+//!
+//! This library is designed to interface with a Nikon flash like the SB-Series flashes. it can be operated in a "active mode", i.e
+//! the behaviour of a camera is simulted or in a passive mode which listens on the iTTL-bus.
+//!
+//! @section Compatibility
+//!
+//! This library has been tested successfully with the following flashes in active and passive mode
+//! @li Nikon SB-900
+//!
+//! This library has been tested sucessfully with the following cameras in passive mode
+//! @li Nikon D-300
+//!
+//! @section Credits
+//!
+//! I want to send special thanks to:
+//!
+//! @li <a href="http://cms.diodenring.de/electronic/microcontroller/110-ittlanalysis">iTTL Protocol Analysis</a>
+//! @li <a href="http://dptnt.com/2010/04/nikon-flash-interface/">Hardware Analysis</a>
+//!
