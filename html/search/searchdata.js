@@ -1,13 +1,12 @@
 var indexSectionsWithContent =
 {
-  0: "_acdefimprsu",
+  0: "_acdefimprstu",
   1: "cis",
   2: "i",
   3: "_cdefimrsu",
-  4: "i",
+  4: "it",
   5: "i",
-  6: "acfimpr",
-  7: "i"
+  6: "acfimpr"
 };
 
 var indexSectionNames =
@@ -18,8 +17,7 @@ var indexSectionNames =
   3: "variables",
   4: "typedefs",
   5: "enums",
-  6: "enumvalues",
-  7: "pages"
+  6: "enumvalues"
 };
 
 var indexSectionLabels =
@@ -30,7 +28,6 @@ var indexSectionLabels =
   3: "Variables",
   4: "Typedefs",
   5: "Enumerations",
-  6: "Enumerator",
-  7: "Pages"
+  6: "Enumerator"
 };
 
