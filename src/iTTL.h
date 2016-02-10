@@ -30,7 +30,7 @@ typedef enum iTTL_Command {
 //! Init 0 Message Definition
 //!
 //! Payload: 17 bytes
-//! Direction: camera to flash
+//! Direction: flash to camera
 //! Purpose: unkown
 //!
 
@@ -39,9 +39,9 @@ typedef struct iTTL_Init_0_Msg {
 } iTTL_Init_0_Msg_t;
 
 //!
-//! Init 0 Message Definition
+//! Init 1 Message Definition
 //!
-//! Payload: 17 bytes
+//! Payload: 9 bytes
 //! Direction: camera to flash
 //! Purpose: unkown
 //! @sa iTTL_Init_0_Msg, iTTL_Init_2_Msg
@@ -52,9 +52,9 @@ typedef struct iTTL_Init_1_Msg {
 } TTL_Init_1_Msg_t;
 
 //!
-//! Init 0 Message Definition
+//! Init 2 Message Definition
 //!
-//! Payload: 17 bytes
+//! Payload: 45 bytes
 //! Direction: camera to flash
 //! Purpose: unkown
 //!
@@ -64,7 +64,7 @@ typedef struct iTTL_Init_2_Msg {
 } iTTL_Init_2_Msg_t;
 
 //!
-//! Init 0 Message Definition
+//! Flash Setting Message Definition
 //!
 //! Payload: 17 bytes
 //! Direction: camera to flash
